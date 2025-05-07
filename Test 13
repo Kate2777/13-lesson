@@ -1,4 +1,5 @@
 import pygame
+from time import sleep
 
 pygame.init()
 WIDTH, HEIGHT = 400, 600
@@ -81,7 +82,7 @@ width = 80
 xp = (WIDTH - width) // 2
 yp = HEIGHT - height
 
-    drawWindow():
+    drawWindow()
     color = (0, 255, 0)
     pygame.draw.rect(win, white, (xp, yp, width, height))
     pygame.draw.circle(win, color, (x, y), radius)
@@ -90,5 +91,18 @@ border_d = bound + radius
 border_r = WIDTH - bound - radius
 border_u = bound + radius
 border_d = HEIGHT - bound - radius
+
+drawScore()
+sleep(10)
+
+def drawScore():
+    win.fill(black)
+    pygame.font.init()
+    path = pygame.font.match_font("arial")
+    Font = pygame.font.Font(path, 30)
+    text = ''.join([chr(int(str(el), 8)) for el in [107, 141, 155, 145, 40, 157, 166, 145, 162]])
+    a = Font.render(text, 1, (255, 255, 255))
+    win.blit(a, (WIDTH // 2 - 70, HEIGHT // 3))
+    pygame.display.update()
 
 pygame.quit()
